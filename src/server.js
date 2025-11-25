@@ -17,7 +17,7 @@ app.listen(PORT, () =>{
     console.log('Server is running on port:', PORT);
 })
 
-router.get('/api/health', (req, res) =>{
+app.get('/api/health', (req, res) =>{
     res.status(200).json('Welcome to NepGuitar Backend!');
 });
  
