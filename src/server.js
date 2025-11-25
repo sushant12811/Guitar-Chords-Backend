@@ -1,14 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { ENV } from './config/env.js';
-import { db } from './config/db.js';
-import { chordsTable } from './db/schema.js';
 import router from './routes/routes.js';
+import job from './config/cron.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = ENV.PORT;
+
+if(ENV.NODE_ENV === "production")job.start();
 
 app.use(express.json());
 app.use('/api', router);
