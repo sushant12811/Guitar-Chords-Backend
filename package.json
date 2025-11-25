@@ -2,10 +2,10 @@
   "name": "nepguitar-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/Server.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/Server.js",
-    "start": "node src/Server.js"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
