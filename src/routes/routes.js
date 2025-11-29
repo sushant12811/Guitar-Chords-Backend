@@ -1,12 +1,12 @@
 import express from 'express';
-import { addChords, deleteChords, getChords } from '../controller/controller.js';
+import { addChords, deleteChords, getChords, getPublicChords } from '../controller/controller.js';
 import { authRequired } from '../middleware/middleware.js';
 
 const router = express.Router();
 
-
+router.get('/chords',authRequired,  getChords)
 router.post('/add', authRequired,  addChords);
-router.get('/chords', getChords)
 router.delete('/delete/:songId', authRequired, deleteChords)  
+router.get('public/chords/:adminId', getPublicChords)
 
 export default router;

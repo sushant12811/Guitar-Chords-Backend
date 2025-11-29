@@ -2,11 +2,13 @@ import  {pgTable, serial, text, integer} from 'drizzle-orm/pg-core';
 
 export const chordsTable = pgTable('chords',{
     id: serial('id').primaryKey(),
+    userId: integer('user_id').notNull(),
     songID: integer('song_id').notNull(),
     name: text('name').notNull(),
     singerName_BandName: text('singername_bandname').notNull(),
     capo: text('capo').notNull(),
     chords: text('chords').notNull(),
+    
 });
 
 export const userTable = pgTable('users',{
