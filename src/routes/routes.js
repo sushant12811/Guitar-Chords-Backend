@@ -7,6 +7,6 @@ const router = express.Router();
 router.get('/chords',authRequired,  getChords)
 router.post('/add', authRequired,  addChords);
 router.delete('/delete/:songId', authRequired, deleteChords)  
-router.get('public/chords/:adminId', getPublicChords)
+router.get('/public/chords/:adminId', getPublicChords)
 
 export default router;
