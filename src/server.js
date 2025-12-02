@@ -13,7 +13,6 @@ dotenv.config();
 const app = express();
 const PORT = ENV.PORT;
 
-
 job.start();
 app.use(cors()); 
 
