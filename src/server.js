@@ -13,7 +13,9 @@ dotenv.config();
 const app = express();
 const PORT = ENV.PORT;
 
-job.start();
+if (ENV.NODE_ENV === 'production') {
+  job.start();
+}
 app.use(cors()); 
 
 
