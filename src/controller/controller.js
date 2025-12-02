@@ -54,6 +54,40 @@ export async function addChords(req, res) {
     }
 }
 
+export async function updateChords(req, res) {
+    try {
+        const userId = req.user.id; 
+        const { songId } = req.params;
+        const { name, singerName_BandName, capo, chords } = req.body;
+
+        const result = await db
+            .update(chordsTable)
+            .set({
+                name,
+                singerName_BandName,
+                capo,
+                chords
+            })
+            .where(
+                eq(chordsTable.songID, parseInt(songId)),
+                eq(chordsTable.userId, userId)
+            )
+            .returning();
+
+        if (result.length === 0) {
+            return res.status(404).json({ message: "Chord not found" });
+        }
+
+        res.status(200).json({
+            message: "Chord updated successfully",
+            data: result[0]
+        });
+    } catch (error) {
+        console.error("Error updating chord:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
 
 export async function deleteChords(req, res) {
     try {
