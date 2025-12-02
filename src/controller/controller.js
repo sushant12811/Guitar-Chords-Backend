@@ -58,7 +58,6 @@ export async function addChords(req, res) {
 export async function deleteChords(req, res) {
     try {
         const { songId } = req.params;
-
         const result = await db
             .delete(chordsTable)
             .where(eq(chordsTable.songID, parseInt(songId)));
